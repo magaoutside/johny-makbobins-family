@@ -1,0 +1,26 @@
+[
+  {
+    "name": "vit_b_spatial_s3101_fit25",
+    "max_map_replay_error": 0.0
+  },
+  {
+    "name": "vit_b_spatial_s3102_fit25",
+    "max_map_replay_error": 0.0
+  },
+  {
+    "name": "vit_b_spatial_s3103_fit25",
+    "max_map_replay_error": 0.0
+  },
+  {
+    "name": "vit_b_spatial_s3101_fit26",
+    "max_map_replay_error": 0.0
+  },
+  {
+    "name": "vit_b_spatial_s3102_fit26",
+    "max_map_replay_error": 0.0
+  },
+  {
+    "name": "vit_b_spatial_s3103_fit26",
+    "max_map_replay_error": 0.0
+  }
+]

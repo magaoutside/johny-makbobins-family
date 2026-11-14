@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-labelledby="title desc">
+  <title id="title">RASCAR — Detector Error Discovery</title>
+  <desc id="desc">Johny Makbobins Family. V58 Public AP 0.97564. 362 test boxes, 3 seeds, cross-day validation.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101c31"/><stop offset="1" stop-color="#0b1220"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#26374d" stroke-width=".5"/></pattern>
+  </defs>
+  <rect width="1280" height="360" rx="24" fill="url(#bg)"/>
+  <rect x="750" width="530" height="360" fill="url(#grid)" opacity=".55"/>
+  <rect x="48" y="45" width="6" height="29" rx="3" fill="#6de6c0"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="68" y="65" fill="#6de6c0" font-size="15" font-weight="700" letter-spacing="2.4">RASCAR / CASE 01</text>
+    <text x="48" y="132" fill="#f4f7fc" font-size="48" font-weight="700">Detector Error Discovery</text>
+    <text x="50" y="176" fill="#a7bad1" font-size="21">Johny Makbobins Family</text>
+    <line x1="50" y1="216" x2="690" y2="216" stroke="#2d4058"/>
+    <text x="50" y="255" fill="#eef5ff" font-size="18" font-weight="700">DINOv2 + SAM2 + TabICL</text>
+    <text x="50" y="287" fill="#91a5bf" font-size="15">362 TEST BOXES · 3 SEEDS · CROSS-DAY VALIDATION</text>
+    <rect x="840" y="58" width="376" height="244" rx="20" fill="#142439" stroke="#35526a"/>
+    <rect x="864" y="82" width="48" height="25" rx="8" fill="#244c46"/>
+    <text x="888" y="100" text-anchor="middle" fill="#90f4ce" font-size="13" font-weight="700">V58</text>
+    <text x="866" y="143" fill="#a8bdd2" font-size="15" letter-spacing="2">PUBLIC AVERAGE PRECISION</text>
+    <text x="862" y="214" fill="#f6fffc" font-size="64" font-weight="700">0.97564</text>
+    <text x="867" y="264" fill="#6de6c0" font-size="18">+0.01264 AP vs V52</text>
+  </g>
+</svg>

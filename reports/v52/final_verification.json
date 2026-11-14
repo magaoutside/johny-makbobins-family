@@ -1,0 +1,26 @@
+{
+  "named_variants": 1615,
+  "distinct_prediction_pairs_rounded_12_digits": 1555,
+  "all_table_metrics_recomputed": true,
+  "maximum_metric_error": 1.1102230246251565e-16,
+  "all_submission_ids_and_ranges_checked": true,
+  "replay": {
+    "oof_a10.csv": {
+      "rows": 198,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    "oof_a20.csv": {
+      "rows": 198,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    "test_a10.csv": {
+      "rows": 362,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    "test_a20.csv": {
+      "rows": 362,
+      "maximum_absolute_error": 1.3877787807814457e-16
+    }
+  },
+  "baseline_sha256": "8720eb732639532bab49eff75b956a6bd4db21b96ede309ed901889777f4ab2c"
+}

@@ -1,0 +1,16 @@
+"""Decisions from inspecting all 8 POOL contact sheets and selected full frames.
+These are screened machine boxes, not freshly drawn exact ground-truth boxes.
+"""
+from pathlib import Path
+import pandas as pd,json
+P=Path(__file__).resolve().parent;d=pd.read_csv(P/'review_candidates.csv')
+geometry=[0,1,4,6,8,10,12,17,19,20,22,23,24,25,26,27,30,31,35,38,40,41,47,49,50,51,52,53,55,59,60,64,69,76,77,78,79,80,83,84,86,88]
+negative=[85,89];uncertain=[42,44,81,82,87]
+notes={2:'Cup partly covered by hand; no precise boundary approval.',32:'Two overlapping hands in one machine box.',34:'Motion blur and forearm in query; presence only.',36:'Hand/object overlap; boundaries uncertain.',37:'Adjacent hands and phone; no single-instance box approval.',39:'Phone and hands overlap; presence only.',41:'Full frame confirms swinging hand; weak geometry only because of motion blur.',42:'Pink object / hand ambiguity at window; excluded, not forced negative.',44:'Phone dominates query, adjacent fingers make absence ambiguous; excluded.',45:'Clasped hands: presence only, no single-hand geometry.',47:'Full frame confirms hand of bending person; weak geometry due to blur.',51:'Visible typing hand; wrist boundary approximate.',55:'Full frame: standing person, feet visible and covered.',57:'Person box incomplete; presence only.',60:'Walking person with visible head and feet.',63:'Moving person, arm/leg extend beyond query; presence only.',65:'Head and lower body not fully covered; presence only.',68:'Person clipped at frame edge, exact visible-box tightness uncertain; presence only.',69:'Walking person, full visible extent covered.',76:'Walking person, visible full body.',77:'Walking person, visible full body, motion blur.',81:'Possible tray under dishes; exact class/boundary uncertain.',82:'Tray and plate boundaries unclear; excluded.',85:'Open book/notebook on table, not a tray. Confirmed in full frame.',87:'Blue oval item with uncertain tray/plate/bag identity; excluded.',89:'Open book/notebook, same motif as #85, not an independent negative category.'}
+d['decision']='presence_only';d.loc[d.review_index.isin(geometry),'decision']='weak_geometry';d.loc[d.review_index.isin(negative),'decision']='class_absent';d.loc[d.review_index.isin(uncertain),'decision']='uncertain'
+d['note']=[notes.get(i,'Object and machine box visually plausible; weak pseudo geometry, not exact GT.' if i in geometry else 'Class visible; occlusion, blur, grouping or extent prevents geometry approval.') for i in d.review_index]
+d['geometry_weight']=d.decision.map({'weak_geometry':.25,'class_absent':.35,'presence_only':0.,'uncertain':0.})
+d.to_csv(P/'visual_review.csv',index=False)
+d[d.decision.isin(['weak_geometry','class_absent'])].to_csv(P/'approved_geometry.csv',index=False)
+(P/'review_manifest.json').write_text(json.dumps(dict(reviewed=len(d),frames=int(d.frame_id.nunique()),counts=d.decision.value_counts().to_dict(),geometry_by_class=d[d.decision.eq('weak_geometry')].class_name.value_counts().to_dict(),test_review_used=False,drawn_exact_boxes=False,full_context_review_indices=[41,42,44,47,55,68,81,85,87],negative_motifs=1,warning='Selected positive-biased development pool; presence-only decisions do not establish bbox IoU. Temporal repetitions are not independent scenes.'),indent=2))
+print(d.groupby(['class_name','decision']).size().to_string())

@@ -1,0 +1,19 @@
+{
+  "official_error_labels_reproduced": 198,
+  "baseline_sha256": "8720eb732639532bab49eff75b956a6bd4db21b96ede309ed901889777f4ab2c",
+  "valid_submission_oof_pairs": 1615,
+  "training_manifests_checked": 538,
+  "static_features": 321,
+  "saved_model_replay_max_error": 1.1102230246251565e-16,
+  "attached_MD_catboost13_reproduced": {
+    "ap": 0.9559625881448164,
+    "2026-10-25": 0.9417318148922218,
+    "2026-10-26": 0.9772091660332843,
+    "cup": 0.9659932659932662,
+    "nude_hands": 0.9921484311051546,
+    "person": 0.9307105137701766,
+    "tray": 0.8480122655122654
+  },
+  "catboost_baseline_contract_max_error": 2.3693290174264803e-07,
+  "note": "Checks establish mechanics and split integrity, not improvement on hidden leaderboard labels."
+}

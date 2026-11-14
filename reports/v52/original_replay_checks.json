@@ -1,0 +1,26 @@
+{
+  "source_files_match_originals": true,
+  "notebook_code_preserved": true,
+  "fresh_training_performed": false,
+  "replay_type": "cached-feature CatBoost inference",
+  "heavy_training_location": "Kaggle only",
+  "replay_checks": {
+    "oof_a10.csv": {
+      "rows": 198,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    "oof_a20.csv": {
+      "rows": 198,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    "test_a10.csv": {
+      "rows": 362,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    "test_a20.csv": {
+      "rows": 362,
+      "maximum_absolute_error": 1.3877787807814457e-16
+    }
+  },
+  "passed": true
+}
