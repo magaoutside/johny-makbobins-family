@@ -85,5 +85,3 @@ python generate_pool.py --stage train-heads --out outputs/pool_models
 Foundation-веса загружает `download_weights.py` по версиям из `weights.json`: CLIP, DINOv2/DINOv3, SAM3.1, WeVis, YOLO. Для SAM3.1 и DINOv3 нужен `HF_TOKEN` с доступом к соответствующим репозиториям.
 
 `setup_env.py --gpu` создаёт Python 3.11 окружения: `.venv` — CPU/CV/YOLO, `.venv-vlm` — WeVis/DINOv3, `.venv-sam3` — SAM3. Скрипты выбирают нужный Python автоматически; пути переопределяются через `--python-cv`, `--python-vlm`, `--python-sam3`. Kaggle-ноутбук устанавливает Python 3.11 и использует `uv` для общей загрузки пакетов.
-
-Измеренные результаты, условия оценки и границы выполненных прогонов — [VALIDATION.md](VALIDATION.md).
