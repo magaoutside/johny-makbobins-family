@@ -98,5 +98,3 @@ python predict.py --mode models --models outputs/trained_models --cache cache/fe
 ```
 
 Здесь ROI и SAM2-признаки берутся из `data/`. Для их пересчёта используйте `from_images.py`.
-
-Измеренные результаты, условия оценки и границы выполненных прогонов — [VALIDATION.md](VALIDATION.md).
