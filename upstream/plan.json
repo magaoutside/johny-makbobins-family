@@ -1,0 +1,64 @@
+{
+  "stages": {
+    "local_evidence": [
+      "duplicate_groups.py",
+      "person_hypotheses.py",
+      "combine.py",
+      "orientation_guard.py",
+      "evaluate_hand_specialist.py",
+      "evaluate_pose.py",
+      "finalize.py"
+    ],
+    "geometry_guards": [
+      "fit_dino_heads.py",
+      "evaluate_wevis.py",
+      "pose_features.py",
+      "replay.py"
+    ],
+    "seat_and_tta": [
+      "seat_models.py",
+      "policy_templates.py",
+      "replay.py"
+    ],
+    "body_and_hands": [
+      "person_body.py",
+      "seat_strength.py",
+      "hand_geometry.py",
+      "palm_completeness.py",
+      "wrist_direction.py",
+      "guarded_refinements.py",
+      "structural_refinements.py",
+      "compose_v18.py",
+      "release_v18.py",
+      "export_replay_inputs.py"
+    ],
+    "modes_and_sahi": [
+      "person_modes.py",
+      "person_dino_modes.py",
+      "evaluate_sahi.py",
+      "compose_release.py",
+      "export_replay_inputs.py"
+    ],
+    "kernel_quality": [
+      "kernel_quality.py",
+      "instance_guards.py",
+      "guard_quality.py"
+    ],
+    "boundary_review": [
+      "evaluate_spatial.py",
+      "evaluate_zoom.py",
+      "compose_guarded.py",
+      "compose_final_candidates.py",
+      "compose_reviewed.py"
+    ]
+  },
+  "historical_names": {
+    "rascar_v15": "local_evidence",
+    "rascar_v16": "geometry_guards",
+    "rascar_v17": "seat_and_tta",
+    "rascar_v18": "body_and_hands",
+    "rascar_v20": "modes_and_sahi",
+    "rascar_v21": "kernel_quality",
+    "rascar_v22": "boundary_review"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "clip": {
+    "repository": "openai/clip-vit-base-patch32",
+    "revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "files": {
+      "config.json": "b575ef3c36f2a057fa19e221650105052d61cc9c1a972ec15019c6261ec98770",
+      "preprocessor_config.json": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+      "pytorch_model.bin": "a63082132ba4f97a80bea76823f544493bffa8082296d62d71581a4feff1576f"
+    }
+  },
+  "vit_b": {
+    "repository": "facebook/dinov2-base",
+    "revision": "f9e44c814b77203eaa57a6bdbbd535f21ede1415",
+    "files": {
+      "config.json": "f7ff4cfa73d2f70647dbf6950541ad25d73082d54c2e7e9bded160c7656b2a70",
+      "preprocessor_config.json": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+      "model.safetensors": "d73036b56966966d07975d696bde331762f37297e2f095de8cea0040c3aa0841"
+    }
+  },
+  "vit_l": {
+    "repository": "facebook/dinov2-large",
+    "revision": "47b73eefe95e8d44ec3623f8890bd894b6ea2d6c",
+    "files": {
+      "config.json": "12df51c069a2dc1305e34ba71ef58bc2407ea553b75f4722a1715c1bce3bbed0",
+      "preprocessor_config.json": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+      "model.safetensors": "399fba97a95f22c36834418bc69373364a99af3a1153da1c0fb31db567c92e23"
+    }
+  },
+  "vit_s": {
+    "repository": "facebook/dinov2-small",
+    "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+    "files": {
+      "config.json": "1809f83e3bdb1609a501a610ad4a742f4fd8ae44d72ca4aa0df52d1f2ac8628d",
+      "preprocessor_config.json": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+      "model.safetensors": "ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1"
+    }
+  },
+  "sam2": {
+    "repository": "facebook/sam2.1-hiera-tiny",
+    "revision": "de431c4043854a71d8101e17995dfe596bf101a5",
+    "files": {
+      "config.json": "860aff9751b139d83a4ad7df1e5535416fded533e0ead02625edbefcb9953cce",
+      "preprocessor_config.json": "6ebf229ee259368ce4a8d4f2fe893a72b053023710853e257253939e601f583d",
+      "processor_config.json": "f8a68e865cfad115c1c2763f3d93eca7b1c622da06da2a9273eb437fb2389b6d",
+      "model.safetensors": "48c14467e5cf9e51870511feb72c89688e82dd74523142c0538b663e193ac2a7"
+    }
+  },
+  "tabicl": {
+    "repository": "jingang/TabICL",
+    "revision": "4dcd344ece2c00be9e831fdd35bed57b5ad83e19",
+    "files": {
+      "tabicl-classifier-v1.1-20250506.ckpt": "bb42d1733b49fab3a7a9e42db648c8ff64d8d5705d93c039179add3bfb2db32b"
+    }
+  },
+  "wevis": {
+    "repository": "tencent/WeVisOne-VL-4B",
+    "revision": "6b44a45873b4bbc7dca383922504430dc60eca23",
+    "patterns": [
+      "*.json",
+      "*.safetensors",
+      "*.py",
+      "*.txt",
+      "*.model"
+    ],
+    "files": {}
+  },
+  "dinov3": {
+    "repository": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+    "revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+    "patterns": [
+      "config.json",
+      "preprocessor_config.json",
+      "*.safetensors"
+    ],
+    "files": {}
+  },
+  "pose": {
+    "repository": "ultralytics/assets",
+    "revision": "v8.4.0",
+    "files": {
+      "yolo26m-pose.pt": "2fbf16367022256a226035695c5c389384c6706e8bb8ab8fcd0e7976f05443c4"
+    },
+    "urls": {
+      "yolo26m-pose.pt": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26m-pose.pt"
+    }
+  },
+  "detector": {
+    "repository": "ultralytics/assets",
+    "revision": "v8.4.0",
+    "files": {
+      "yolo26s.pt": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b"
+    },
+    "urls": {
+      "yolo26s.pt": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26s.pt"
+    }
+  },
+  "sam3": {
+    "repository": "facebook/sam3.1",
+    "revision": "daa63191845a41281374e725f4c9e51c7a824460",
+    "patterns": [
+      "sam3.1_multiplex.pt"
+    ],
+    "files": {}
+  }
+}

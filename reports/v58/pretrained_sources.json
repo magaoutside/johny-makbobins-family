@@ -1,7 +1,0 @@
-{
-  "DINOv2-B": "https://huggingface.co/facebook/dinov2-base",
-  "DINOv2-S fine-tuning experiment": "https://huggingface.co/facebook/dinov2-small",
-  "DINOv2-L experiment": "https://huggingface.co/facebook/dinov2-large",
-  "SAM2.1 Tiny": "https://huggingface.co/facebook/sam2.1-hiera-tiny",
-  "TabICL v1.1": "https://huggingface.co/jingang/TabICL"
-}
