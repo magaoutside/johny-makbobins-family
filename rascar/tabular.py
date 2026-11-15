@@ -1,6 +1,8 @@
 """Selected TabICL experts: opposite-day fitting, portable loading and prior shift."""
 from contextlib import contextmanager
 from pathlib import Path
+import importlib
+import sys
 import numpy as np
 import pandas as pd
 from .core import DAYS, CLASSES, queries, labels, aligned_csv, write_json
@@ -31,6 +33,14 @@ def relocate(checkpoint, device):
     # TabICL 2.2.0 unpickles before applying load(device=...). Patch only inside
     # this scope so an old absolute model path cannot be resolved accidentally.
     from tabicl._sklearn.base import TabICLBaseEstimator
+    # NumPy 2 contexts refer to this private module. NumPy 1.26 already
+    # provides the multiarray compatibility alias, but not the numeric one.
+    numeric_alias = False
+    try:
+        importlib.import_module('numpy._core.numeric')
+    except ModuleNotFoundError:
+        sys.modules['numpy._core.numeric'] = importlib.import_module('numpy.core.numeric')
+        numeric_alias = True
     original = TabICLBaseEstimator.__setstate__
     def restore(self, state):
         state = dict(state)
@@ -41,6 +51,8 @@ def relocate(checkpoint, device):
         yield
     finally:
         TabICLBaseEstimator.__setstate__ = original
+        if numeric_alias:
+            sys.modules.pop('numpy._core.numeric', None)
 
 
 def run(data, models, checkpoint, device, fit=False):
