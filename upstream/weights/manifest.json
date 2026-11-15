@@ -1,0 +1,152 @@
+[
+  {
+    "file": "2026-10-25_cup_inside_svm.joblib",
+    "source": "Kaggle rascar-v22-hard-cases-and-boundary-experts run 369221215; original fitted spatial classifier",
+    "bytes": 1192612,
+    "sha256": "3d8eaa2a35593a267018a057a0eb8ce175e5a8443481d0cb5b47c49d409d5963"
+  },
+  {
+    "file": "2026-10-25_nude_hands_spatial_logreg.joblib",
+    "source": "Kaggle rascar-v22-hard-cases-and-boundary-experts run 369221215; original fitted spatial classifier",
+    "bytes": 37352,
+    "sha256": "5a1ec7d7d0eaab8d8522ded9a92918f68ba127bca46aa29c68433ff55ddfed07"
+  },
+  {
+    "file": "2026-10-25_nude_hands_spatial_svm.joblib",
+    "source": "Kaggle rascar-v22-hard-cases-and-boundary-experts run 369221215; original fitted spatial classifier",
+    "bytes": 5976312,
+    "sha256": "6a6fdda6a306fdf9ad947cf3aba6d3a2d8a71f8a0557420056c2e3376f128f41"
+  },
+  {
+    "file": "2026-10-26_cup_inside_svm.joblib",
+    "source": "Kaggle rascar-v22-hard-cases-and-boundary-experts run 369221215; original fitted spatial classifier",
+    "bytes": 1515052,
+    "sha256": "b31a532dae2d93cf858566591f61de5c0e34392c9378a9c364ca0810fa3cf8f4"
+  },
+  {
+    "file": "2026-10-26_nude_hands_spatial_logreg.joblib",
+    "source": "Kaggle rascar-v22-hard-cases-and-boundary-experts run 369221215; original fitted spatial classifier",
+    "bytes": 38211,
+    "sha256": "6188d42f324dbe0679d43f2ecac0811b8dab094d86aab14a940e19dc568d1caf"
+  },
+  {
+    "file": "2026-10-26_nude_hands_spatial_svm.joblib",
+    "source": "Kaggle rascar-v22-hard-cases-and-boundary-experts run 369221215; original fitted spatial classifier",
+    "bytes": 11770932,
+    "sha256": "300920420b8de1cf00dd5261c7145f0ef05a551d2f82e9b692cdc332ba6bb57c"
+  },
+  {
+    "file": "generic_2026-10-25.pt",
+    "bytes": 20384133,
+    "sha256": "1ecaa48ae58b3b9df5b523b1286f8d64a7f4f642eca132719189a4ce25f40602",
+    "source": "rascar-v14-geometry-quality-and-learned-ranking (folds: version 9; all: version 3)"
+  },
+  {
+    "file": "generic_2026-10-26.pt",
+    "bytes": 20384133,
+    "sha256": "f98f3df0e1dc91f804db757a285239b826395a24b12888e31a84f3a2fa887448",
+    "source": "rascar-v14-geometry-quality-and-learned-ranking (folds: version 9; all: version 3)"
+  },
+  {
+    "file": "generic_all.pt",
+    "bytes": 20384197,
+    "sha256": "533f16f4eaeccc0446f5c3d16e0d7f2c9d9ef546e59fc9f32313dcbff1fb513e",
+    "source": "rascar-v14-geometry-quality-and-learned-ranking (folds: version 9; all: version 3)"
+  },
+  {
+    "file": "geometry_2026-10-25.cbm",
+    "bytes": 38584,
+    "sha256": "207aae52d0cbaeded6b0ad223a93a6af59ddd84c4e6ef553b40e2450e6a3060c",
+    "source": "CPU refit of original frozen features; OOF max drift 5e-16"
+  },
+  {
+    "file": "geometry_2026-10-26.cbm",
+    "bytes": 38752,
+    "sha256": "693d5f1db55430c5c803ef2558fe1b0d06661b9e915cbd8ef1c653c164be6c0a",
+    "source": "CPU refit of original frozen features; OOF max drift 5e-16"
+  },
+  {
+    "file": "hand_expanded_2026-10-25.pt",
+    "bytes": 20307461,
+    "sha256": "7f4666ba2f160bafbb866a8c2f0697f865b776e35e8a9ebb7355b3f8b2803cb5",
+    "source": "Original V20 hand checkpoints recovered from Kaggle dataset archive"
+  },
+  {
+    "file": "hand_expanded_2026-10-26.pt",
+    "bytes": 20304837,
+    "sha256": "922811c440e2365fb46dec04b02d69dcb0ee67d50eb866da9719ae9829d50d27",
+    "source": "Original V20 hand checkpoints recovered from Kaggle dataset archive"
+  },
+  {
+    "file": "hand_initial_2026-10-25.pt",
+    "bytes": 20296965,
+    "sha256": "0c6ab2eb8ad21eb9be07873844d9b25abe41cd289574011059e203d05af5f651",
+    "source": "rascar_v15/weights original checkpoints"
+  },
+  {
+    "file": "hand_initial_2026-10-26.pt",
+    "bytes": 20297221,
+    "sha256": "869a9034719a282fbb3a5fec4f35c3f73bb4e2de4de7a57885ce10ce7b209a4c",
+    "source": "rascar_v15/weights original checkpoints"
+  },
+  {
+    "file": "hand_initial_all.pt",
+    "bytes": 20297221,
+    "sha256": "730f145f1f9600394e936be8670ceabf9a88ad5bc58aef9dd8d86f03acf3a189",
+    "source": "rascar_v15/weights original checkpoints"
+  },
+  {
+    "file": "hand_refined_2026-10-25.pt",
+    "bytes": 20303109,
+    "sha256": "e25c564f6fe76954a43d132d9bbadd713467bffc028d61bc4c8c3509f2b67e47",
+    "source": "rascar_v17/gpu_results original checkpoints"
+  },
+  {
+    "file": "hand_refined_2026-10-26.pt",
+    "bytes": 20289989,
+    "sha256": "734fee1eebb1437500e5946e2c6d2f605651337bff33a9310ca9837f29dc52c7",
+    "source": "rascar_v17/gpu_results original checkpoints"
+  },
+  {
+    "file": "hand_refined_all.pt",
+    "bytes": 20295301,
+    "sha256": "e1f4593e30748f49e2d8832880dda73fec65665553bccd72b6696d411f9adde3",
+    "source": "rascar_v17/gpu_results original checkpoints"
+  },
+  {
+    "file": "hand_targeted_2026-10-25.pt",
+    "bytes": 20307909,
+    "sha256": "02935dfecc18878990ae2d8e93181cb6787a51954a60cd28500bf54c787e36a9",
+    "source": "rascar-v22-hard-cases-and-boundary-experts run 369221215"
+  },
+  {
+    "file": "hand_targeted_2026-10-26.pt",
+    "bytes": 20291013,
+    "sha256": "66c6e0fc9ea9417ef43fec015b32f1ef3950b44c5fca412a7c9573059648aed0",
+    "source": "rascar-v22-hard-cases-and-boundary-experts run 369221215"
+  },
+  {
+    "file": "quality_initial_2026-10-25.joblib",
+    "bytes": 25439,
+    "sha256": "d130aab6ed7098a0138f61d955ce88d1a62f5b2e02d549148d8e501678b7bdb8",
+    "source": "rascar_v15 original fitted DINOv3 quality head"
+  },
+  {
+    "file": "quality_initial_2026-10-26.joblib",
+    "bytes": 25439,
+    "sha256": "282deb9a2837e1eac9d7ca0a054ffb59be226cc7bc689c8522fcf2df2d8cb6af",
+    "source": "rascar_v15 original fitted DINOv3 quality head"
+  },
+  {
+    "file": "semantic_initial_2026-10-25.joblib",
+    "bytes": 123951,
+    "sha256": "3d995f5f98a9fe37e10a03f2c562f657cdc1dffedd7154cb29cbfdaed18128b4",
+    "source": "rascar_v15 original fitted DINOv3 classification head"
+  },
+  {
+    "file": "semantic_initial_2026-10-26.joblib",
+    "bytes": 123951,
+    "sha256": "afd64df846cfee163ffdc3ee6c19bdebedc976132edbe6776d7440500c029de4",
+    "source": "rascar_v15 original fitted DINOv3 classification head"
+  }
+]
