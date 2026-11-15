@@ -1,0 +1,26 @@
+{
+  "rows_test": 362,
+  "rows_oof": 198,
+  "max_absolute_difference_from_release": 4.998224056862455e-13,
+  "pooled_oof_ap": 0.9929174276934449,
+  "test_labels_used": false,
+  "exact_release_check": true,
+  "submission_sha256": "1ccc86a345fed7590f0462a2216aa9f07f032df0c68a63decf6cdcde2d8087d6",
+  "oof_ap_2026-10-25": 0.9852814704477109,
+  "oof_ap_2026-10-26": 0.9954344377840556,
+  "matches_release": true,
+  "validation_scope": "CPU inference from published caches; complete raw GPU route not run after packaging",
+  "upstream_cpu": {
+    "rows": 560,
+    "max_abs_difference": 3.3306690738754696e-16
+  },
+  "raw_metadata": {
+    "queries": 560,
+    "train_queries": 198,
+    "test_queries": 362,
+    "manual_boxes": 1032,
+    "prototypes": 240,
+    "dense_crops": 1219
+  },
+  "raw_spatial_training_records_match": true
+}
