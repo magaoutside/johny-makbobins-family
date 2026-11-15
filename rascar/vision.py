@@ -8,6 +8,16 @@ import torch
 from .core import BBOX, CROP, queries, write_json
 
 
+def resize_without_ipp(image, size):
+    """Match OpenCV cubic resize used by the original macOS feature runs."""
+    previous = cv2.ipp.useIPP()
+    try:
+        cv2.ipp.setUseIPP(False)
+        return cv2.resize(image, size, interpolation=cv2.INTER_CUBIC)
+    finally:
+        cv2.ipp.setUseIPP(previous)
+
+
 def image_reader(images):
     paths = {p.stem: p for p in Path(images).rglob('*.jpg')}
     @lru_cache(maxsize=32)
@@ -74,7 +84,7 @@ def extract_roi(data, images, weights, output, device):
             for _, r in records.iloc[start:start+8].iterrows():
                 c = r[CROP].to_numpy(int)
                 im = read(r.frame_id)[c[1]:c[3], c[0]:c[2]]
-                batch.append(cv2.resize(im, (224, 224), interpolation=cv2.INTER_CUBIC).transpose(2, 0, 1).copy())
+                batch.append(resize_without_ipp(im, (224, 224)).transpose(2, 0, 1).copy())
             x = torch.from_numpy(np.stack(batch)).to(device).float()/255
             with torch.inference_mode():
                 z = model(pixel_values=(x-mean)/std).last_hidden_state
@@ -90,7 +100,7 @@ def extract_roi(data, images, weights, output, device):
         np.save(output/f'{key}_prototypes.npy', features[n_queries:])
         del model
     write_json(output/'extraction.json', dict(record_ids=records.id.tolist(),
-               labels_used=False, crop_scale=1.9, input_size=224, device=device))
+               labels_used=False, crop_scale=1.9, input_size=224, device=device, resize_ipp=False))
 
 
 def extract_dense(data, images, weights, cache, device, small=False):
@@ -118,7 +128,9 @@ def extract_dense(data, images, weights, cache, device, small=False):
                 im = read(r.frame_id)[c[1]:c[3], c[0]:c[2]]
                 if flip:
                     im = im[:, ::-1]
-                batch.append(cv2.resize(im, (448, 448), interpolation=cv2.INTER_CUBIC).transpose(2, 0, 1).copy())
+                resized = resize_without_ipp(im, (448, 448)) if small else cv2.resize(
+                    im, (448, 448), interpolation=cv2.INTER_CUBIC)
+                batch.append(resized.transpose(2, 0, 1).copy())
             x = torch.from_numpy(np.stack(batch)).to(device).float()/255
             with torch.inference_mode():
                 z = model(pixel_values=(x-mean)/std).last_hidden_state[:, 1:].transpose(1, 2).reshape(-1, dim, 32, 32)
@@ -128,4 +140,5 @@ def extract_dense(data, images, weights, cache, device, small=False):
         dst.flush()
         del dst
         temp.replace(cache/name)
-    write_json(marker, dict(ids=rec.id.tolist(), device=device, rgb_flip=not small))
+    write_json(marker, dict(ids=rec.id.tolist(), device=device, rgb_flip=not small,
+                           resize_ipp=False if small else cv2.ipp.useIPP()))
