@@ -148,5 +148,19 @@
     "bytes": 123951,
     "sha256": "afd64df846cfee163ffdc3ee6c19bdebedc976132edbe6776d7440500c029de4",
     "source": "rascar_v15 original fitted DINOv3 classification head"
+  },
+  {
+    "file": "pool_semantic_2026-10-25.joblib",
+    "bytes": 124015,
+    "sha256": "026a9ea292f9a2d6d54a9aa0a23d56376056c0e66497e1cf76bee2336ff51e48",
+    "source": "Original rascar_v16 semantic_both_2026-10-25.joblib; machine-pool DINOv3 classification head",
+    "training": "generate_pool.py --stage train-heads; also geometry_guards/fit_dino_heads.py on raw-derived features"
+  },
+  {
+    "file": "pool_semantic_2026-10-26.joblib",
+    "bytes": 124015,
+    "sha256": "c9ab3e11ff910fc5e3a4fd9c31134bf2c81f1a583ca43047d207109467c51866",
+    "source": "Original rascar_v16 semantic_both_2026-10-26.joblib; machine-pool DINOv3 classification head",
+    "training": "generate_pool.py --stage train-heads; also geometry_guards/fit_dino_heads.py on raw-derived features"
   }
 ]

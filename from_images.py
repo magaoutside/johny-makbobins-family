@@ -18,13 +18,13 @@ def main():
     p.add_argument('--python-sam3',type=Path,default=ROOT/'.venv-sam3/bin/python')
     p.add_argument('--python-sam2',type=Path,default=ROOT/'.venv-sam2/bin/python')
     p.add_argument('--retrain',action='store_true',help='Train all selected models into a new output folder')
-    p.add_argument('--start',choices=['metadata','foundation','local','guards','tta','body','sahi','kernel','boundary','final'],default='metadata')
+    p.add_argument('--start',choices=['metadata','foundation','local','guards','tta','body','pool','sahi','kernel','boundary','final'],default='metadata')
     a=p.parse_args()
     if a.retrain and a.start=='metadata' and a.out.exists():p.error('--retrain requires a new --out directory; keep previous training runs intact')
     for name in ['raw','out','weights','models','python_cv','python_vlm','python_sam3','python_sam2']:setattr(a,name,getattr(a,name).resolve())
     work=initialize(a.out/'upstream',cached=False);early_models=a.out/'early_models' if a.retrain else ROOT/'upstream/weights';data=a.out/'data';det=data/'detections';cache=a.out/'features';foundation=a.out/'foundation'
     for d in [data,det,cache,foundation]:d.mkdir(parents=True,exist_ok=True)
-    order=['metadata','foundation','local','guards','tta','body','sahi','kernel','boundary','final'];start=order.index(a.start)
+    order=['metadata','foundation','local','guards','tta','body','pool','sahi','kernel','boundary','final'];start=order.index(a.start)
     def active(stage):return order.index(stage)>=start
     def prep(stage,python,out=det):
         subprocess.run([str(python),str(ROOT/'prepare.py'),stage,'--raw',str(a.raw),'--data',str(data),'--out',str(out),'--weights',str(a.weights),'--detections',str(det),'--device',a.device],check=True)
@@ -69,6 +69,16 @@ def main():
         for fit in ['2026-10-25','2026-10-26','all']:job('seat_and_tta','gpu_worker.py',[fit,a.device.removeprefix('cuda:')])
         run_stage(work,'seat_and_tta')
     if active('body'):run_stage(work,'body_and_hands')
+    if active('pool'):
+        pool=a.out/'machine_pool'
+        subprocess.run([str(a.python_cv),str(ROOT/'generate_pool.py'),
+            '--raw',str(a.raw),'--out',str(pool),'--weights',str(a.weights),
+            '--work',str(work),'--python-cv',str(a.python_cv),'--python-vlm',str(a.python_vlm),
+            '--device',a.device],check=True)
+        for stage in ['modes_and_sahi','boundary_review']:
+            for day in ['2026-10-25','2026-10-26']:
+                name=f'approved_pseudo_boxes_{day}.csv'
+                shutil.copy2(pool/name,work/stage/'inputs'/name)
     if active('sahi'):
         for fit in ['2026-10-25','2026-10-26']:job('modes_and_sahi','gpu_yolo_hands.py',[fit,a.device.removeprefix('cuda:')])
         run_stage(work,'modes_and_sahi')
