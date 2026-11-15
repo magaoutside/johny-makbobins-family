@@ -1,0 +1,12 @@
+review_index,frame_id,day,source,boxes,roi_x1,roi_y1,roi_x2,roi_y2
+1,GENERAL_mishka_1_5_20261025_075300,2026-10-25,reviewed_pool_focused,1,106,304,234,424
+3,GENERAL_mishka_1_5_20261025_081800,2026-10-25,reviewed_pool_focused,1,142,278,270,406
+6,GENERAL_mishka_1_5_20261025_100800,2026-10-25,reviewed_pool_focused,1,244,220,372,348
+7,GENERAL_mishka_1_5_20261025_101030,2026-10-25,reviewed_pool_focused,1,216,290,344,418
+10,GENERAL_mishka_1_5_20261025_115500,2026-10-25,reviewed_pool_focused,1,196,220,324,348
+30,GENERAL_mishka_1_5_20261026_134200,2026-10-26,reviewed_pool_focused,2,156,210,284,338
+36,GENERAL_mishka_1_5_20261026_153100,2026-10-26,reviewed_pool_focused,2,152,215,280,343
+39,GENERAL_mishka_1_5_20261026_163830,2026-10-26,reviewed_pool_focused,2,158,215,286,343
+41,GENERAL_mishka_1_5_20261026_175300,2026-10-26,reviewed_pool_focused,2,148,226,276,354
+18,GENERAL_mishka_1_5_20261026_111900,2026-10-26,reviewed_pool_negative,0,125,267,187,329
+28,GENERAL_mishka_1_5_20261026_131130,2026-10-26,reviewed_pool_negative,0,125,267,187,329

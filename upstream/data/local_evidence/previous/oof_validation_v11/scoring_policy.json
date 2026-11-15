@@ -1,0 +1,27 @@
+{
+  "classes": [
+    "cup",
+    "tray",
+    "person",
+    "mop",
+    "bottle",
+    "napkin",
+    "nude_hands",
+    "lunch_box",
+    "sauce",
+    "cleaning_uniform",
+    "yellow_gloves",
+    "table"
+  ],
+  "aliases": {
+    "nude_hand": "nude_hands",
+    "white_napkin": "napkin"
+  },
+  "correct_iou": 0.6,
+  "positive_label": "error",
+  "metric": "sklearn average_precision_score",
+  "test_excluded_classes": [
+    "table"
+  ],
+  "person_convention": "manual person box covers the whole person, including body parts hidden by the table"
+}
