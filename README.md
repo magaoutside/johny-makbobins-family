@@ -65,18 +65,6 @@ python verify.py --out outputs/from_images/predictions --allow-drift
 
 Результат — `outputs/from_images/predictions/submission.csv`. Если данные уже скачаны, передайте их каталог через `--raw`; архив можно распаковать командой `python download_data.py --archive /path/to/competition.zip`.
 
-### Машинный пул
-
-Полный запуск включает `generate_pool.py`: исходные машинные боксы → YOLO и DINOv3 → отбор псевдоразметки → обучение специалистов. Визуальные решения по обучающему пулу хранятся отдельно от модельных оценок.
-
-Отдельный запуск после установки GPU-окружений и загрузки данных/весов:
-
-```bash
-python generate_pool.py --raw cache/competition --out outputs/machine_pool --device cuda:0
-```
-
-Результаты: `approved_pseudo_boxes_2026-10-25.csv`, `approved_pseudo_boxes_2026-10-26.csv`, журнал оценок и `manifest.json` в указанной папке. Подробности — [REPRODUCIBILITY.md](REPRODUCIBILITY.md#машинный-пул).
-
 ## Обучить заново
 
 Шесть прототипных CatBoost на сохранённых признаках:
