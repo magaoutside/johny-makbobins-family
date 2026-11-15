@@ -115,7 +115,7 @@
   "upstream/weights/2026-10-26_nude_hands_spatial_logreg.joblib": "6188d42f324dbe0679d43f2ecac0811b8dab094d86aab14a940e19dc568d1caf",
   "upstream/weights/quality_initial_2026-10-26.joblib": "282deb9a2837e1eac9d7ca0a054ffb59be226cc7bc689c8522fcf2df2d8cb6af",
   "upstream/weights/geometry_2026-10-25.cbm": "207aae52d0cbaeded6b0ad223a93a6af59ddd84c4e6ef553b40e2450e6a3060c",
-  "upstream/weights/manifest.json": "c85e512d72e5c20ac53fb2a5d92a6c4cdfd0eadb3d08f1a02e5562b3c19ffce5",
+  "upstream/weights/manifest.json": "e0a7c23b31af203137571b75045b3aacec0e49762e119347c3939759c3999834",
   "upstream/weights/hand_refined_all.pt": "e1f4593e30748f49e2d8832880dda73fec65665553bccd72b6696d411f9adde3",
   "upstream/weights/generic_all.pt": "533f16f4eaeccc0446f5c3d16e0d7f2c9d9ef546e59fc9f32313dcbff1fb513e",
   "upstream/weights/geometry_2026-10-26.cbm": "693d5f1db55430c5c803ef2558fe1b0d06661b9e915cbd8ef1c653c164be6c0a",
@@ -134,5 +134,8 @@
   "upstream/annotations/boundary_review/approved_pseudo_boxes_2026-10-25.csv": "b7bf7434bc8d1444af85ddfb56c60720cabc313c14fb6db44e4d61e2a977e451",
   "upstream/annotations/boundary_review/reviewed_pool_crops.csv": "763af1623dce043b7acff29087762d248b2fd92662af02c669c8a5471680d361",
   "upstream/annotations/modes_and_sahi/approved_pseudo_boxes_2026-10-26.csv": "2be8285ed70bc97d399b12b8c15bc4fbc9804150d41769214ecdfd5308fa74cb",
-  "upstream/annotations/modes_and_sahi/approved_pseudo_boxes_2026-10-25.csv": "b7bf7434bc8d1444af85ddfb56c60720cabc313c14fb6db44e4d61e2a977e451"
+  "upstream/annotations/modes_and_sahi/approved_pseudo_boxes_2026-10-25.csv": "b7bf7434bc8d1444af85ddfb56c60720cabc313c14fb6db44e4d61e2a977e451",
+  "upstream/annotations/pool_review_decisions.csv": "263e39bc9daf272010ffa132ff77d418459d4329c8dd266722c32dc77822da7f",
+  "upstream/weights/pool_semantic_2026-10-25.joblib": "026a9ea292f9a2d6d54a9aa0a23d56376056c0e66497e1cf76bee2336ff51e48",
+  "upstream/weights/pool_semantic_2026-10-26.joblib": "c9ab3e11ff910fc5e3a4fd9c31134bf2c81f1a583ca43047d207109467c51866"
 }

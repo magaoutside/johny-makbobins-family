@@ -34,7 +34,9 @@ def metadata(raw,data,work):
     for stage in ['modes_and_sahi','boundary_review']:
         src=ROOT/'upstream/annotations'/stage
         if src.exists():
-            for p in src.glob('*.csv'):shutil.copy2(p,work/stage/'inputs'/p.name)
+            # Only the separate reviewed annotations are fixed inputs. Pool
+            # model scores and approved pseudo boxes are regenerated later.
+            for p in src.glob('reviewed_pool_*.csv'):shutil.copy2(p,work/stage/'inputs'/p.name)
     (work/'boundary_review/roots.json').write_text(json.dumps(dict(images=str(raw),checkpoints=str(work/'modes_and_sahi/gpu_results'))))
 
 
