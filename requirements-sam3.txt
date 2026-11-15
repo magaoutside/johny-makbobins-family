@@ -1,0 +1,9 @@
+torch==2.11.0
+torchvision==0.26.0
+ultralytics==8.4.210
+huggingface-hub==1.12.1
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.15.3
+scikit-learn==1.6.1
+git+https://github.com/ultralytics/CLIP.git@7ffa84b3bfa40c42ecc1c77147a855e69cb2dd40

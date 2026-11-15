@@ -1,0 +1,8 @@
+-r requirements.txt
+torch==2.7.1
+torchvision==0.22.1
+transformers==5.12.1
+accelerate==1.14.0
+qwen-vl-utils==0.0.14
+Pillow==11.3.0
+requests>=2.32.0,<3

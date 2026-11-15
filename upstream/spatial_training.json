@@ -1,0 +1,62 @@
+{
+  "2026-10-25_nude_hands": {
+    "columns": [
+      "frame_id",
+      "class_name",
+      "day",
+      "error",
+      "weight",
+      "x1",
+      "y1",
+      "x2",
+      "y2"
+    ],
+    "rows": 450,
+    "sha256": "785912b73ef480419223235f940324096f3d3ad1149ef6dceb0d9b358b2d6949"
+  },
+  "2026-10-25_cup": {
+    "columns": [
+      "frame_id",
+      "class_name",
+      "day",
+      "error",
+      "weight",
+      "x1",
+      "y1",
+      "x2",
+      "y2"
+    ],
+    "rows": 343,
+    "sha256": "342f5a96cfae3ba5dc344c82cf8b05cf2f87a1f4694ca328a2103a9ab83c8e4d"
+  },
+  "2026-10-26_nude_hands": {
+    "columns": [
+      "frame_id",
+      "class_name",
+      "day",
+      "error",
+      "weight",
+      "x1",
+      "y1",
+      "x2",
+      "y2"
+    ],
+    "rows": 959,
+    "sha256": "2e773f5fe9235c1123f7b6897585ba6ea2536be07ff74867466606ee97ca8eb7"
+  },
+  "2026-10-26_cup": {
+    "columns": [
+      "frame_id",
+      "class_name",
+      "day",
+      "error",
+      "weight",
+      "x1",
+      "y1",
+      "x2",
+      "y2"
+    ],
+    "rows": 486,
+    "sha256": "9433e6b3467f3bdb74386171c744c3e315915151572f117c899ceae32669349a"
+  }
+}

@@ -1,10 +1,8 @@
-*.py text eol=lf
-*.md text eol=lf
-*.yml text eol=lf
-*.svg text eol=lf
-*.csv -text
-*.npz binary
+upstream/data/** -text whitespace=cr-at-eol
+*.csv -text whitespace=cr-at-eol
 *.npy binary
-*.cbm binary
+*.npz binary
 *.pt binary
+*.cbm binary
+*.joblib binary
 *.pkl binary

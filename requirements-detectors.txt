@@ -1,0 +1,3 @@
+-r requirements-gpu.txt
+ultralytics==8.4.211
+sahi==0.11.36
