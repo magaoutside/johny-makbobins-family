@@ -55,14 +55,15 @@
   "wevis": {
     "repository": "tencent/WeVisOne-VL-4B",
     "revision": "6b44a45873b4bbc7dca383922504430dc60eca23",
-    "patterns": [
-      "*.json",
-      "*.safetensors",
-      "*.py",
-      "*.txt",
-      "*.model"
-    ],
-    "files": {}
+    "files": {
+      "chat_template.jinja": "3636d0f0bd6bef02654cdffdc447b79cb2cef8ab02cc75267345946291a489e4",
+      "config.json": "69da45bf7cdb6776dc3949034ff9c4ab711abddc696adc272a8cf18bc5399697",
+      "generation_config.json": "5583d8b7fa1515aaabdfbca2cf412d99a86c98d9dd57dd66cfb132504f1fa4ad",
+      "model.safetensors": "002c3ac0783af7c86dc28b282c84dd4bcd0c29dcb3b5e0d584492fe3212acb4a",
+      "processor_config.json": "d89ef49ce9cd37fbf510158e13c1ef063d9286411c1ec9049932dbe0487143b1",
+      "tokenizer.json": "3bb172429b952469b51c64783f52fa01c26d1b30f1f31a4693e385a43f9cfc5e",
+      "tokenizer_config.json": "af3b0fe802740ae544beb2b395b9b498fc942d8df2323cd0117bf1dfdec1d943"
+    }
   },
   "dinov3": {
     "repository": "facebook/dinov3-vitb16-pretrain-lvd1689m",
