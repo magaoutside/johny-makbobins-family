@@ -2,34 +2,19 @@
 
 # RASCAR · Spatial Ensemble
 
-### Поиск ошибок детектора по изображению и геометрии бокса
+**Public AP 0.97564** · **OOF AP 0.992917428** · Python 3.11
 
-**Public AP 0.97564** &nbsp; · &nbsp; **OOF AP 0.992917428** &nbsp; · &nbsp; Python 3.11
-
-[Решение 0.97564](https://github.com/magaoutside/johny-makbobins-family/tree/spatial-ensemble) · [Решение 0.96300](https://github.com/magaoutside/johny-makbobins-family/tree/prototype-baseline)
+[Spatial Ensemble · 0.97564](https://github.com/magaoutside/johny-makbobins-family/tree/spatial-ensemble) · [Prototype Baseline · 0.96300](https://github.com/magaoutside/johny-makbobins-family/tree/prototype-baseline)
 
 </div>
 
-На входе — фотография и предложенный детектором бокс. На выходе — **вероятность ошибки бокса**: неправильный класс, положение, размер или лишний дубль. Чем выше `score`, тем подозрительнее бокс. Исходные координаты не меняются.
+На входе — фотография и бокс детектора. На выходе — `score` ошибки: чем он выше, тем вероятнее неправильный класс, границы или дубль. Координаты бокса не меняются.
 
-Классы: `person`, `nude_hands`, `cup`, `tray`. **198** размеченных запросов в train, **362** запроса в test. Метрика — Average Precision.
+Классы: `person`, `nude_hands`, `cup`, `tray`. **198** размеченных запросов, **362** тестовых. Метрика — Average Precision.
 
-## Начать здесь
+## Получить сабмит на CPU
 
-| Нужно | Команда после установки | Результат |
-|---|---|---|
-| Получить исходный сабмит на CPU | `python predict.py` | `outputs/submission.csv` |
-| Проверить каждое предсказание и AP | `python verify.py` | `outputs/verification.json` |
-| Переобучить 6 прототипных моделей | `python train.py` | `outputs/trained_models/` |
-| Пересчитать раннюю цепочку на сохранённых признаках | `python rebuild_upstream.py` | `outputs/rebuilt_features/guarded_scores.csv` |
-| Пересчитать всё из фотографий на GPU | `python from_images.py` | `outputs/from_images/predictions/submission.csv` |
-| Переобучить всю цепочку на GPU | `python from_images.py --retrain --out outputs/full_training` | новые веса, признаки и сабмит в `outputs/full_training/` |
-
-> **Что проверено.** Исходный CPU-сабмит и обучение прототипных моделей воспроизводятся численно. В новой Kaggle-сессии проверены открытые GPU-этапы, дообученные модели и связи ранней цепочки. Полный запуск с фотографий пока не подтверждён: нужен доступ к SAM3.1 / DINOv3; у финальной ветки также измерено расхождение исторических SAM2-кропов. Точные результаты и границы проверки — в [REPRODUCIBILITY.md](REPRODUCIBILITY.md#gpu-проверка-на-kaggle-15112026).
-
-## 1. Получить сабмит — пять шагов
-
-Нужны Git и **Python 3.11**. GPU и доступ к Kaggle для этого маршрута не нужны: компактные признаки и собственные обученные модели уже в ветке.
+Признаки и наши обученные модели уже в репозитории. Нужны Git и Python 3.11.
 
 ```bash
 git clone --branch spatial-ensemble --single-branch https://github.com/magaoutside/johny-makbobins-family.git
@@ -40,84 +25,33 @@ python predict.py
 python verify.py
 ```
 
-**Готовый файл для отправки — `outputs/submission.csv`: 362 строки, столбцы `id,score`.**
+**Результат: `outputs/submission.csv` — 362 строки, столбцы `id,score`.** На Windows окружение активируется командой `.venv\Scripts\activate`.
 
-Windows: активация окружения — `.venv\Scripts\activate`. `reference/submission.csv` — исходный отправленный файл; `predict.py` его не читает. `verify.py` сравнивает каждый скор, ID, порядок строк, допустимый диапазон и OOF AP. Допуск совпадения — `1e-10`.
-
-## 2. Что находится в репозитории
-
-| Файл / папка | Назначение |
-|---|---|
-| [predict.py](predict.py) | Единственная точка входа для финальных предсказаний. |
-| [train.py](train.py) | Обучение выбранных финальных моделей. |
-| [from_images.py](from_images.py) | Полная последовательность: фотографии → признаки → модели → сабмит. Флаг `--retrain` включает переобучение. |
-| [prepare.py](prepare.py) | Отдельные этапы извлечения признаков. Список: `python prepare.py --help`. |
-| [rebuild_upstream.py](rebuild_upstream.py) | Пересчёт раннего ансамбля из детекций и эмбеддингов; без GPU. |
-| [rebuild_baseline.py](rebuild_baseline.py) | Инференс / обучение линейной DINOv2-S головы перед прототипной моделью. |
-| [download_weights.py](download_weights.py) | Скачать foundation-веса по закреплённым ревизиям и проверить их целостность. |
-| [download_data.py](download_data.py) | Скачать данные соревнования или распаковать существующий ZIP. |
-| [models/](models/) | Веса финальных моделей этой ветки и линейной пространственной базы. |
-| [data/](data/) | Запросы, train-метки, геометрия, эмбеддинги и сохранённые предсказания экспертов. |
-| [rascar/](rascar/) | Реализация признаков, обучения, инференса и смешивания. |
-| [upstream/](upstream/) | Только используемая ранняя цепочка: код, дообученные веса, кэши и дополнительные train-аннотации. |
-| [reference/](reference/) | Эталон для проверки результата. Не вход модели. |
-| [config.json](config.json) | Выбранные признаки, seeds и коэффициенты. |
-| [checksums.json](checksums.json) | SHA256 каждого поставляемого артефакта. |
-| `outputs/`, `cache/` | Новые результаты и большие скачанные файлы. Исключены из Git. |
-
-## 3. Суть решения
+## Как устроено решение
 
 ```mermaid
 flowchart LR
-    A[Фото + исходный бокс] --> B[SAM3 · WeVis · YOLO · pose]
-    A --> C[CLIP · DINO]
-    B --> D[Геометрия и защитные правила]
+    A[Фото и бокс] --> B[Детекции и геометрия]
+    A --> C[CLIP и DINO]
+    B --> D[Ранние модели и правила]
     C --> D
-    D --> E[Линейная DINOv2-S голова]
+    D --> E[DINOv2-S: заполненность бокса]
     E --> F[Прототипный CatBoost]
-    F --> G[TabICL + SAM2 + пространственные CNN]
-    G --> H[Ограниченная поправка → score]
+    F --> G[TabICL · SAM2 · CNN]
+    G --> H[Итоговый score]
 ```
 
-Независимые модели проверяют присутствие объекта и согласованность его границ. Специалисты по рукам работают на увеличенных кропах, с поворотами и обучением на полных аннотациях. Геометрические правила учитывают головы, суставы, части тела вне бокса и дубли. Линейная голова DINOv2-S уточняет заполненность бокса.
+SAM3, WeVis, YOLO и pose проверяют присутствие объекта и согласованность границ. Специалисты по рукам используют увеличенные кропы, повороты и детекцию по тайлам. Ранние модели объединяют эти сигналы с геометрией.
 
-Прототипный этап использует **22 геометрических признака + 27 сходств с GT-прототипами CLIP/DINOv2 + категорию класса**. Прототипы берутся только из дня обучения; совпадающий кадр исключается. Шесть CatBoost — два направления по дням × три seed — консервативно корректируют скоры людей.
+Прототипный этап: **22 геометрических признака + 27 сходств CLIP/DINOv2 + класс**. Шесть CatBoost обучаются по двум дням с тремя seed; прототипы берутся из дня обучения, совпадающий кадр исключается.
 
-Финальный ансамбль добавляет:
+Финальный ансамбль добавляет SAM2-признаки устойчивости границ, 18 контекстов TabICL и 6 пространственных CNN на DINOv2-B. Поправки ограничены по величине; формула — [rascar/blend.py](rascar/blend.py).
 
-- **SAM2:** устойчивость маски к четырём возмущениям исходного бокса, на полном кадре и кропе.
-- **TabICL:** 18 сохранённых контекстов для базовых признаков и двух вариантов SAM2. Foundation-веса TabICL заморожены; для рук применяется адаптация априорной вероятности.
-- **DINOv2-B + CNN:** шесть обученных пространственных голов, три seed, отражение RGB. Цель обучения — заполненность прямоугольников ручной разметки, а не пиксельная GT-сегментация.
+По умолчанию выходы TabICL/CNN читаются из сохранённых признаков. `predict.py --mode models` запускает эти эксперты заново; для него нужны плотные DINO-карты и скачанные foundation-веса.
 
-[Формула ансамбля](rascar/blend.py) ограничивает поправки. Для чашек требуется согласие моделей двух дней по направлению изменения; для подносов применяется сдвиг логита на −0.6. Общая поправка к прототипной базе ограничена ±0.15. Таблиц «ID → вручную заданный score» нет.
+## Пересчитать из фотографий на GPU
 
-По умолчанию повторно исполняются CatBoost и смешивание, а выходы TabICL/CNN берутся из `data/expert_predictions.npz`. `--mode models` повторно запускает эти модели; сам NPZ в расчёте не используется.
-
-## 4. Повторить обучение на сохранённых признаках
-
-```bash
-python train.py
-python predict.py --models outputs/trained_models --out outputs/retrained
-python verify.py --out outputs/retrained
-```
-
-Обучение использует `data/train_labels.csv`, а новые веса сохраняет отдельно. Состав фолдов и признаки записываются в `outputs/trained_models/training.json`. Этот CPU-маршрут проверен на численное совпадение с исходным запуском.
-
-Пересчёт ранних моделей и правил:
-
-```bash
-python rebuild_upstream.py
-```
-
-Кэш содержит детекции / эмбеддинги, а не готовые результаты всех промежуточных моделей. Скрипт заново обучает выбранные ранние CPU-модели и последовательно передаёт их выход следующему этапу. Для применения пересчитанного скора используйте полный маршрут ниже: он передаёт новую папку данных всем последующим командам.
-
-## 5. Полный путь от фотографий — GPU
-
-Запускайте на Linux с NVIDIA GPU, например в Kaggle Notebook. Открытые GPU-этапы, включая WeVis, проверены на NVIDIA T4 с 16 GB памяти. Требования и длительность полного запуска с SAM3.1 / DINOv3 ещё не измерены. Подготовьте место под foundation-модели, исходные фотографии и несколько отдельных окружений.
-
-### Установить окружения и получить входные данные
-
-Для Kaggle есть готовый [ноутбук воспроизведения](notebooks/reproduce.ipynb): подключите ZIP нужной ветки и выполните ячейки по порядку. Он устанавливает Python 3.11 независимо от версии Python в ядре Kaggle.
+Linux, NVIDIA GPU, Python 3.11. Для Kaggle — [готовый ноутбук](notebooks/reproduce.ipynb). Для загрузки нужны доступ к соревнованию и `HF_TOKEN` с доступом к SAM3.1 и DINOv3.
 
 ```bash
 python3.11 setup_env.py --gpu
@@ -125,78 +59,67 @@ source .venv/bin/activate
 python -m pip install -r requirements-download.txt
 python download_data.py
 python download_weights.py
-```
-
-Доступ к соревнованию и gated-моделям SAM3.1 / DINOv3 оформляется у владельцев источников. Для Hugging Face используйте переменную `HF_TOKEN` или штатный login; токен не записывается в код. Скрипт не принимает условия доступа за вас.
-
-Если архив уже есть: `python download_data.py --archive /path/to/competition.zip`.
-Если данные подключены в Kaggle: передайте их каталог в `--raw`, скачивать повторно не требуется.
-Внутри Kaggle загрузчик использует прямую HTTP-загрузку KaggleHub в указанный каталог: подключение общего кэша может зависать. Авторизация остаётся штатной, исходные файлы не меняются.
-
-### Пересчитать с исходными обученными весами
-
-```bash
 python from_images.py --raw cache/competition --device cuda:0
 python verify.py --out outputs/from_images/predictions --allow-drift
 ```
 
-Все промежуточные данные появляются в `outputs/from_images/`. Этот маршрут **не копирует кэш признаков из `data/` или `upstream/data/`**. Он получает метаданные из исходных CSV, извлекает признаки из JPG, использует приложенные дополнительные train-аннотации и обученные веса. Сохранённые данные ветки используются для сравнения результата.
+Результат — `outputs/from_images/predictions/submission.csv`. Если данные уже скачаны, передайте их каталог через `--raw`; архив можно распаковать командой `python download_data.py --archive /path/to/competition.zip`.
 
-`--allow-drift` выводит расхождение и AP; он не скрывает ошибку. Разные GPU и версии библиотек могут менять численные значения. Точный исходный сабмит получают маршрутом из раздела 1.
+### Машинный пул
 
-### Обучить всю выбранную цепочку заново
+Полный запуск включает `generate_pool.py`: исходные машинные боксы → YOLO и DINOv3 → отбор псевдоразметки → обучение специалистов. Визуальные решения по обучающему пулу хранятся отдельно от модельных оценок.
+
+Отдельный запуск после установки GPU-окружений и загрузки данных/весов:
+
+```bash
+python generate_pool.py --raw cache/competition --out outputs/machine_pool --device cuda:0
+```
+
+Результаты: `approved_pseudo_boxes_2026-10-25.csv`, `approved_pseudo_boxes_2026-10-26.csv`, журнал оценок и `manifest.json` в указанной папке. Подробности — [REPRODUCIBILITY.md](REPRODUCIBILITY.md#машинный-пул).
+
+## Обучить заново
+
+Шесть прототипных CatBoost на сохранённых признаках:
+
+```bash
+python train.py
+python predict.py --models outputs/trained_models --out outputs/retrained
+```
+
+Вся цепочка из фотографий, включая машинный пул:
 
 ```bash
 python from_images.py --raw cache/competition --retrain --out outputs/full_training --device cuda:0
 python verify.py --out outputs/full_training/predictions --allow-drift
 ```
 
-Этот запуск обучает детекторы, ранние классификаторы, линейную DINO-голову и финальные модели. Foundation-backbones остаются замороженными. Новые checkpoint-файлы сохраняются внутри `outputs/full_training/`; исходные веса не перезаписываются.
+Новые веса сохраняются в папке запуска. Для продолжения укажите тот же `--out`, прежний режим `--retrain` и этап `--start`, например `pool`, `sahi` или `final`.
 
-Можно продолжить с этапа: `--start foundation|local|guards|tta|body|sahi|kernel|boundary|final`. При продолжении укажите тот же `--out`; предыдущие этапы должны быть завершены. Для переобучения сохраните флаг `--retrain`.
+## Что где лежит
 
-Полная карта генераторов, окружений, аннотаций и весов: [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
+| Файл / папка | Назначение |
+|---|---|
+| [predict.py](predict.py), [train.py](train.py), [verify.py](verify.py) | Предсказания, обучение финальных моделей, проверка результата. |
+| [from_images.py](from_images.py), [prepare.py](prepare.py) | Полная цепочка и отдельные этапы извлечения признаков. |
+| [generate_pool.py](generate_pool.py) | Модельный отбор машинного пула и обучение его семантических голов. |
+| [rebuild_upstream.py](rebuild_upstream.py), [rebuild_baseline.py](rebuild_baseline.py) | Ранний CPU-ансамбль и линейная DINOv2-S модель. |
+| [setup_env.py](setup_env.py), `requirements*.txt` | Окружения и зависимости. |
+| [download_data.py](download_data.py), [download_weights.py](download_weights.py) | Загрузка исходных данных и foundation-весов. |
+| [rascar/](rascar/), [upstream/code/](upstream/code/) | Реализация моделей, признаков и ранних этапов. |
+| [models/](models/), [upstream/weights/](upstream/weights/) | Наши обученные модели. |
+| [data/](data/), [upstream/data/](upstream/data/) | Сохранённые признаки для CPU-запуска. |
+| [upstream/annotations/](upstream/annotations/) | Решения разметки обучающего пула и сохранённый результат отбора. |
+| [config.json](config.json), [weights.json](weights.json), [checksums.json](checksums.json) | Настройки, источники foundation-весов и контрольные суммы. |
+| [reference/](reference/) | Исходные предсказания для сравнения; не вход модели. |
+| `outputs/`, `cache/` | Результаты запусков и загрузки; исключены из Git. |
 
-### Повторить только финальные GPU-эксперты
+Происхождение признаков и веса: [REPRODUCIBILITY.md](REPRODUCIBILITY.md). Измерения и условия оценки: [VALIDATION.md](VALIDATION.md).
 
-```bash
-python download_weights.py --models vit_b sam2 tabicl
-python prepare.py dense --out cache/features --device cuda:0
-python predict.py --mode models --cache cache/features --device cuda:0 --out outputs/from_models
-python verify.py --out outputs/from_models --allow-drift
-```
-
-Здесь SAM2-признаки уже лежат в `data/`, а плотные DINO-карты извлекаются заново из фотографий. Чтобы пересчитать и SAM2, используйте `from_images.py`.
-
-```bash
-python train.py --component all --cache cache/features --device cuda:0
-python predict.py --mode models --models outputs/trained_models --cache cache/features --out outputs/retrained_models --device cuda:0
-python verify.py --out outputs/retrained_models --allow-drift
-```
-
-`--component tabular` обучает только контексты TabICL; `--component spatial` — только CNN-головы. Частичный кэш DINO-карт отклоняется.
-
-## 6. Качество и ограничения оценки
+## Метрики
 
 | Оценка | AP |
 |---|---:|
 | Kaggle Public | **0.97564** |
-| Объединённый opposite-day OOF | **0.992917428** |
+| Opposite-day OOF | **0.992917428** |
 | Проверка на 25 октября, обучение на 26 октября | 0.985281470 |
 | Проверка на 26 октября, обучение на 25 октября | 0.995434438 |
-
-Public AP — результат отправленного CSV, сообщённый участником команды. OOF — обучение на одном дне и проверка на другом; тест — ансамбль двух направлений. OOF многократно использовался при выборе моделей и коэффициентов, поэтому это development-оценка, а не независимый финальный holdout. Визуальный просмотр теста повлиял на общие эвристики; визуальные предположения не считаются истинной тестовой разметкой.
-
-## 7. Если что-то не запускается
-
-| Проблема | Решение |
-|---|---|
-| Нужен только CSV, нет GPU | Раздел 1. |
-| `Missing or changed release artifact` | Восстановить файл этой ветки; не смешивать артефакты двух решений. |
-| Не найден checkpoint | `python download_weights.py`; собственные дообученные веса уже в Git. |
-| 401 / 403 от Kaggle или Hugging Face | Проверить авторизацию и доступ к конкретному источнику. |
-| Нет `Sam2Model` / несовместимые Transformers | Установить окружения через `setup_env.py --gpu`; `from_images.py` выбирает нужный Python. |
-| Не хватает GPU-памяти | Использовать GPU с большей памятью; CPU-сабмит остаётся доступен без пересчёта foundation-моделей. |
-| Прерывание GPU-этапа | Посмотреть последний лог в `outputs/from_images/upstream/logs/`, исправить причину и продолжить через `--start`. |
-
-Источники pretrained-весов закреплены в [weights.json](weights.json). Происхождение собственных checkpoint-файлов и их SHA256 — [upstream/weights/manifest.json](upstream/weights/manifest.json).
