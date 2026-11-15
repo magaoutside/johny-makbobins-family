@@ -1,0 +1,14 @@
+id,frame_id,day,class_name,review_index,annotation_source,boundary_source,weight,x1,y1,x2,y2
+pool22_1_0,GENERAL_mishka_1_5_20261025_075300,2026-10-25,nude_hands,1,assistant_visual_review_nonofficial,reviewed_machine_box,0.35,122.1,325.6,149.3,355.8
+pool22_3_0,GENERAL_mishka_1_5_20261025_081800,2026-10-25,nude_hands,3,assistant_visual_review_nonofficial,reviewed_machine_box,0.35,153.8,295.8,182.4,320.6
+pool22_6_0,GENERAL_mishka_1_5_20261025_100800,2026-10-25,nude_hands,6,assistant_visual_review_nonofficial,reviewed_machine_box,0.35,263.2,243.2,286.0,265.8
+pool22_7_0,GENERAL_mishka_1_5_20261025_101030,2026-10-25,nude_hands,7,assistant_visual_review_nonofficial,reviewed_machine_box,0.35,235.2,310.9,262.4,338.0
+pool22_10_0,GENERAL_mishka_1_5_20261025_115500,2026-10-25,nude_hands,10,assistant_visual_review_nonofficial,reviewed_machine_box,0.35,200.4,250.5,224.3,269.9
+pool22_30_0,GENERAL_mishka_1_5_20261026_134200,2026-10-26,nude_hands,30,assistant_visual_review_nonofficial,reviewed_machine_box,0.35,203.4,232.8,229.1,252.3
+pool22_30_1,GENERAL_mishka_1_5_20261026_134200,2026-10-26,nude_hands,30,assistant_visual_review_nonofficial,manually_added_neighbor,0.35,176.0,240.0,195.0,260.0
+pool22_36_0,GENERAL_mishka_1_5_20261026_153100,2026-10-26,nude_hands,36,assistant_visual_review_nonofficial,reviewed_machine_box,0.35,175.3,233.0,200.4,254.1
+pool22_36_1,GENERAL_mishka_1_5_20261026_153100,2026-10-26,nude_hands,36,assistant_visual_review_nonofficial,manually_added_neighbor,0.35,204.0,248.0,222.0,265.0
+pool22_39_0,GENERAL_mishka_1_5_20261026_163830,2026-10-26,nude_hands,39,assistant_visual_review_nonofficial,reviewed_machine_box,0.35,204.8,235.3,233.8,254.3
+pool22_39_1,GENERAL_mishka_1_5_20261026_163830,2026-10-26,nude_hands,39,assistant_visual_review_nonofficial,manually_added_neighbor,0.35,176.0,250.0,194.0,269.0
+pool22_41_0,GENERAL_mishka_1_5_20261026_175300,2026-10-26,nude_hands,41,assistant_visual_review_nonofficial,reviewed_machine_box,0.35,164.3,256.1,195.1,279.7
+pool22_41_1,GENERAL_mishka_1_5_20261026_175300,2026-10-26,nude_hands,41,assistant_visual_review_nonofficial,manually_added_neighbor,0.35,197.9,250.7,226.0,272.0
