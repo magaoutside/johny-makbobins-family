@@ -85,7 +85,9 @@ def extract(data, raw, weights, out, device):
     model=AutoModel.from_pretrained(checkpoint,local_files_only=True,dtype=torch.float16).to(device).eval()
     for p in model.parameters():p.requires_grad_(False)
     skip=1+model.config.num_register_tokens;vectors=[]
-    images_cache={fid:Image.open(path).convert('RGB') for fid,path in paths.items()}
+    # Only annotated/query frames are used here; the unrelated machine pool has
+    # thousands of images and would otherwise occupy about 16 GB of host RAM.
+    images_cache={fid:Image.open(paths[fid]).convert('RGB') for fid in records.frame_id.unique()}
     for start in range(0,len(records),24):
         batch=records.iloc[start:start+24];images=[]
         for r in batch.itertuples():
