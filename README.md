@@ -113,7 +113,7 @@ python verify.py --out outputs/full_training/predictions --allow-drift
 | [reference/](reference/) | Исходные предсказания для сравнения; не вход модели. |
 | `outputs/`, `cache/` | Результаты запусков и загрузки; исключены из Git. |
 
-Происхождение признаков и веса: [REPRODUCIBILITY.md](REPRODUCIBILITY.md). Измерения и условия оценки: [VALIDATION.md](VALIDATION.md).
+Происхождение признаков и веса: [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
 
 ## Метрики
 
